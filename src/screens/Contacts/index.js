@@ -1,10 +1,11 @@
 import React from 'react';
 import {Text, View} from 'react-native';
+import Container from '../../components/common/Container';
 const Contacts = () => {
   return (
-    <View>
+    <Container style={{color: 'red', padding: 100}}>
       <Text>Hi from contacts</Text>
-    </View>
+    </Container>
   );
 };
 
