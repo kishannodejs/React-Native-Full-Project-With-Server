@@ -1,10 +1,12 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Text, TextInput} from 'react-native';
+import Container from '../../components/common/Container';
+import Input from '../../components/common/Input';
+import CustomButton from '../../components/common/CustomButton';
+import LoginComponent from '../../components/Login';
+import RegisterComponent from '../../components/Signup';
 const Register = () => {
-  return (
-    <View>
-      <Text>Hi from Register</Text>
-    </View>
-  );
+  const [value, onChangeText] = React.useState('');
+  return <RegisterComponent />;
 };
 export default Register;
