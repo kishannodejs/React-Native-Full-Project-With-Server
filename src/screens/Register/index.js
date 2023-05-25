@@ -6,10 +6,15 @@ import CustomButton from '../../components/common/CustomButton';
 import LoginComponent from '../../components/Login';
 import RegisterComponent from '../../components/Signup';
 import {useNavigation} from '@react-navigation/native';
+import envs from '../../config/env';
 const Register = () => {
   const [form, setForm] = useState({});
   const {navigate} = useNavigation();
   const [errors, setErrors] = useState({});
+  const {BACKEND_URL} = envs;
+
+  console.log('Backend_URL :>>', envs);
+  console.log('__DEV__', __DEV__);
   const onChange = ({name, value}) => {
     setForm({...form, [name]: value});
 
