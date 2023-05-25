@@ -7,11 +7,18 @@ import LoginComponent from '../../components/Login';
 import RegisterComponent from '../../components/Signup';
 import {useNavigation} from '@react-navigation/native';
 import envs from '../../config/env';
+import axiosInstance from '../../helpers/axiosInstance';
 const Register = () => {
   const [form, setForm] = useState({});
   const {navigate} = useNavigation();
   const [errors, setErrors] = useState({});
   const {BACKEND_URL} = envs;
+
+  React.useEffect(() => {
+    axiosInstance.get('http://10.0.2.2:4000/api/products').catch(err => {
+      console.log('err===>', err);
+    });
+  }, []);
 
   console.log('Backend_URL :>>', envs);
   console.log('__DEV__', __DEV__);
