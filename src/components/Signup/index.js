@@ -38,6 +38,7 @@ const RegisterComponent = ({
           {error?.error && (
             <Message retry danger retryFn={onSubmit} message={error?.error} />
           )}
+
           <Input
             label="Username"
             iconPosition="right"

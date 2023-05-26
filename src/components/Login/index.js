@@ -9,7 +9,14 @@ import {REGISTER} from '../../constants/routeNames';
 import Message from '../common/Message';
 import styles from './styles';
 
-const LoginComponent = () => {
+const LoginComponent = ({
+  error,
+  // form,
+  // justSignedUp,
+  onChange,
+  // loading,
+  onSubmit,
+}) => {
   const [value, onChangeText] = React.useState('');
   const {navigate} = useNavigation();
   return (
@@ -23,12 +30,19 @@ const LoginComponent = () => {
       <View>
         <Text style={styles.title}>Welcome to RNContacts</Text>
         <Text style={styles.subTitle}>Please login here</Text>
+        {error && !error.error && (
+          <Message onDismiss={() => {}} danger message="invalid credentials" />
+        )}
+
+        {error?.error && <Message danger onDismiss message={error?.error} />}
         <View style={styles.form}>
           <Input
             label="Username"
             iconPosition="right"
             placeholder="Enter Username"
-            // error={'This field is required'}
+            onChangeText={value => {
+              onChange({name: 'userName', value});
+            }}
           />
           <Input
             label="Password"
@@ -36,8 +50,11 @@ const LoginComponent = () => {
             secureTextEntry={true}
             iconPosition="right"
             placeholder="Enter Password"
+            onChangeText={value => {
+              onChange({name: 'password', value});
+            }}
           />
-          <CustomButton primary title="Submit" />
+          <CustomButton onPress={onSubmit} primary title="Submit" />
           <View style={styles.createSection}>
             <Text style={styles.infoText}>Need a new account?</Text>
             <TouchableOpacity
